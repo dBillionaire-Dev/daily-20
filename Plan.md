@@ -1,6 +1,6 @@
 # **20-Week Career-Ready Full-Stack + AI/ML Roadmap**
 
-![Gemini_Generated_Image_cz7v2ocz7v2ocz7v.png](../../Downloads/Gemini_Generated_Image_cz7v2ocz7v2ocz7v.png)
+<img width="1408" height="768" alt="Gemini_Generated_Image_cz7v2ocz7v2ocz7v" src="https://github.com/user-attachments/assets/707fbe80-1b5d-4bce-ac4d-fa716570d7db" />
 
 ---
 
