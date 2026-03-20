@@ -1,6 +1,6 @@
 # **20-Week Career-Ready Full-Stack + AI/ML Roadmap**
 
-![ChatGPT Image Mar 20, 2026, 11_36_29 PM.png](../../Downloads/ChatGPT%20Image%20Mar%2020%2C%202026%2C%2011_36_29%20PM.png)
+<img width="1536" height="1024" alt="Pictorial Overview" src="https://github.com/user-attachments/assets/78c81dff-0598-4539-b01f-d6ef25f47658" />
 
 ---
 
