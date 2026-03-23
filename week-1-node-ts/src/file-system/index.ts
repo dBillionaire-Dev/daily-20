@@ -9,15 +9,9 @@ import path from "path";
  */
 
 // Reading Files
-
 // Node.js provides several methods to read files, including both callback-based and promise-based approaches.
-
 //    The most common method is fs.readFile().
-
 //    Note: Always handle errors when working with file operations to prevent your application from crashing.
- //   Reading Files with Callbacks
-
- //   Here's how to read a file using the traditional callback pattern:
 
 // Read file asynchronously with callback
 fs.readFile('myfile.txt', 'utf8', (err, data) => {
