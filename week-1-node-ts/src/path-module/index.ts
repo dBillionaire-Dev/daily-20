@@ -3,7 +3,7 @@ import { fileURLToPath } from "url";
 
 /**
  * In "type": module, Node.js treats code as ESM.
- * This means that the __filename is not automatically derived as it is n CommonJs module
+ * This means that the __filename is not automatically derived as it is in CommonJs module
  * To that effect, filename has to be built using the url module.
  * Which is imported above and built as it is below;
  * Failure to do this in modern practise will throw an error.

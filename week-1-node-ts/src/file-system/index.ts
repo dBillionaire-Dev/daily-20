@@ -67,7 +67,7 @@ const writeFileExample = async (): Promise<void> => {
          */
 
         );
-        console.log("New File Created Successfully at:", path.join(__dirname, 'newFile.txt'));
+        console.log("New File Created Successfully at:", newFile, 'newFile.txt');
     } catch (e) {
         console.error('Error writing file:', e);
     }
