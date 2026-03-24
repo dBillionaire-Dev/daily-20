@@ -111,7 +111,10 @@ console.log("Synchronous Code: End");
  */
 
 /** IMPORTANT NOTE:
- * The exact order of setTimeout and setImmediate can vary based on the environment and timing, but generally, setTimeout with a 0ms delay will execute before setImmediate. However, in some cases, especially when the event loop is busy, setImmediate may execute before the timers. Always test and understand the behavior in your specific environment.
+ * The exact order of setTimeout and setImmediate can vary based on the environment and timing.
+ * But generally, setTimeout with a 0ms delay will execute before setImmediate.
+ * However, in some cases, especially when the event loop is busy, setImmediate may execute before the timers.
+ * Always test and understand the behavior in your specific environment.
  * Especially when inside I/O (fs.readFile())
  *
  * fs.readFile(__filename, (): void => {
