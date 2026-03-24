@@ -46,6 +46,13 @@ const readBinaryExample = async (): Promise<void> => {
     }
 }
 
+/**
+ * OUTPUT FOR THE READ FILE
+ * File content: This is the content of my file
+ * Image size: 1725615 bytes
+ */
+
+
 //WRITE FILES
 const newFile = path.join(__dirname, 'newFile.txt');
 const writeFileExample = async (): Promise<void> => {
