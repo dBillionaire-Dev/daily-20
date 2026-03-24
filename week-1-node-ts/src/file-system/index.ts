@@ -47,10 +47,10 @@ const readBinaryExample = async (): Promise<void> => {
 }
 
 //WRITE FILES
-
+const newFile = path.join(__dirname, 'newFile.txt');
 const writeFileExample = async (): Promise<void> => {
     try {
-        await fs.writeFile(path.join(__dirname, 'newFile.txt'),
+        await fs.writeFile(newFile,
             'Hello, this is a new file created using fs.writeFile!',
             { encoding: 'utf-8', flag: 'wx' }
         /**
@@ -70,7 +70,7 @@ const writeFileExample = async (): Promise<void> => {
 const appendFileExample = async (): Promise<void> => {
     try {
         const createdAt: string = `Created at ${new Date().toISOString()}`;
-        await fs.appendFile(path.join(__dirname, 'newFile.txt'), `\n${createdAt}`, 'utf8');
+        await fs.appendFile(newFile, `\n${createdAt}`, 'utf8');
         console.log('Content appended successfully!');
     } catch (err) {
         console.error('Error appending to file:', err);
