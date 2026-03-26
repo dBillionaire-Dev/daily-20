@@ -41,20 +41,37 @@
  */
 
 //Creating a readable stream
-import { createReadStream, createWriteStream } from 'fs';
-import { pipeline } from 'stream/promises';
-import { createGzip } from 'zlib';
+import { createReadStream } from 'fs';
+import { fileURLToPath } from 'url';
+import path from "path";
+
+const __filename: string = fileURLToPath(import.meta.url);
+const __dirname: string = path.dirname(__filename);
+const inputFile: string = path.join(__dirname, 'random.txt');
 
 const readableStream = createReadStream(
-    'input.txt',
+    inputFile,
     {
         encoding: 'utf-8' ,
         highWaterMark: 1024 * 32 // 32kb chunks
         //NOTE: { highWaterMark: 1024 } sets the buffer/chunk size to 1KB (default is 64KB)
-    });
-const writableStream = createWriteStream('output.txt');
-const gzipStream = createGzip();
+});
 
-pipeline(readableStream, gzipStream, writableStream)
-  .then(() => console.log('Pipeline succeeded'))
-  .catch((err) => console.error('Pipeline failed', err));
+let chunkCount: number = 0;
+let totalBytes: number = 0;
+
+readableStream.on("data", (chunk: string): void => {
+    chunkCount++;
+    totalBytes += chunk.length;
+    console.log(`Received Chunk: #${chunkCount} ${chunk.length} bytes`);
+})
+
+readableStream.on("end", (): void => {
+    console.log('\n--- Finished reading the file! ---');
+    console.log(`Processed ${chunkCount} total chunks, \nRead ${(totalBytes/1048576).toFixed(2)} mb total`);
+    console.log("No more data to read.");
+})
+
+readableStream.on("error", (error: Error): void => {
+   console.error("Error reading large file:", error);
+});
