@@ -63,6 +63,7 @@ console.log("\n--- Login Listener Removed ---\n");
 //Nezer won't be logged to the console when logged in
 emitter.emit("userLogin", "Nezer", new Date().toLocaleTimeString());
 emitter.emit("userLogout", "Impulse");
+emitter.emit("userLogout", "Nezer");
 
 /**
  * EXPECTED OUTPUT:
@@ -76,5 +77,12 @@ emitter.emit("userLogout", "Impulse");
  * --- Login Listener Removed ---
  *
  * [LOG]: User logged out: Impulse
+ * [LOG]: User logged out: Nezer
+ *
+ * In this output, we see the login events for Nex and Impulse, along with the special message for the admin's first login.
+ * After removing the login listener, only the logout events are logged for Impulse and Nezer, while Nezer's login event is not logged.
+ *
+ * This example demonstrates how to use the EventEmitter class to manage events in a Node.js application,
+ * allowing for a clean and modular way to handle various actions and their associated listeners.
  */
 
