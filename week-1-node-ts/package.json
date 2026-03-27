@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "npx ts-node src/streams/brain.ts",
+    "start": "npx ts-node src/streams/index.ts",
     "build": "npx tsc",
-    "dev": "npx nodemon src/streams/brain.ts",
+    "dev": "npx nodemon src/streams/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

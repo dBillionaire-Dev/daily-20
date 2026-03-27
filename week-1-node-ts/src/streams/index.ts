@@ -41,7 +41,7 @@
  */
 
 //Creating a readable stream
-import { createReadStream } from 'fs';
+import { createReadStream, createWriteStream } from 'fs';
 import { fileURLToPath } from 'url';
 import path from "path";
 
@@ -75,3 +75,5 @@ readableStream.on("end", (): void => {
 readableStream.on("error", (error: Error): void => {
    console.error("Error reading large file:", error);
 });
+
+//Writing a stream to a file
