@@ -41,7 +41,7 @@
  */
 
 //Creating a readable stream
-import { createReadStream, createWriteStream } from 'fs';
+import  { createReadStream, createWriteStream } from 'node:fs';
 import { fileURLToPath } from 'url';
 import path from "path";
 
