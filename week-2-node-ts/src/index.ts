@@ -8,11 +8,25 @@ const newFile: string = path.join(__dirname, "week.md");
 
 const createFile = async (): Promise<void> => {
     try {
-        await fs.writeFile(newFile, "This is the content of the file.");
+        await fs.writeFile(newFile, "This is the content of the file.",  {
+            encoding: "utf-8",
+                flag: "wx",
+        });
         console.log("File created successfully.");
     } catch (e) {
         console.error('Error creating file:', e);
     }
 }
 
-await createFile();
+const makeNewDirectory = async (): Promise<void> => {
+    try {
+        await fs.mkdir(path.join(__dirname, "week-2-node-ts"), { recursive: true });
+        console.log("Directory created or already exists.");
+    } catch (e) {
+        console.error('Error creating directory:', e);
+    }
+}
+await Promise.all([
+    createFile(),
+    makeNewDirectory(),
+])
