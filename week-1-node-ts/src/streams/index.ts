@@ -48,6 +48,7 @@ import path from "path";
 const __filename: string = fileURLToPath(import.meta.url);
 const __dirname: string = path.dirname(__filename);
 const inputFile: string = path.join(__dirname, 'random.txt');
+const writeFile: string = path.join(__dirname, 'output.txt');
 
 const readableStream = createReadStream(
     inputFile,
@@ -77,3 +78,16 @@ readableStream.on("error", (error: Error): void => {
 });
 
 //Writing a stream to a file
+const writeToStream = createWriteStream(writeFile);
+
+writeToStream.write("Hello, this is a writable stream example.\n");
+writeToStream.write("This stream writes data to a file in chunks.\n");
+writeToStream.write("Streams are efficient for handling large data.\n");
+
+writeToStream.end("This is the end of the stream.\n", (): void => {
+    console.log("Finished writing to output.txt");
+});
+
+writeToStream.on("error", (error: Error): void => {
+    console.error("Error writing to file:", error);
+});

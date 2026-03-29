@@ -1,0 +1,4 @@
+Hello, this is a writable stream example.
+This stream writes data to a file in chunks.
+Streams are efficient for handling large data.
+This is the end of the stream.
