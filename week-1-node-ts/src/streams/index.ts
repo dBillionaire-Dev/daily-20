@@ -106,3 +106,4 @@ writeStream.on("finish", (): void => {
 writeStream.on("error", (error: Error): void => {
     console.error("Error during piping:", error);
 });
+
