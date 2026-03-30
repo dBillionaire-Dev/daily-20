@@ -91,3 +91,18 @@ writeToStream.end("This is the end of the stream.\n", (): void => {
 writeToStream.on("error", (error: Error): void => {
     console.error("Error writing to file:", error);
 });
+
+//Reading a file and writing it to another file using pipe
+const outputFile: string = path.join(__dirname, 'outputFile.txt');
+const readStream = createReadStream(inputFile, { encoding: 'utf-8' });
+const writeStream = createWriteStream(outputFile);
+
+readStream.pipe(writeStream);
+
+writeStream.on("finish", (): void => {
+    console.log("Finished copying file using pipe!");
+});
+
+writeStream.on("error", (error: Error): void => {
+    console.error("Error during piping:", error);
+});
