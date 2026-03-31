@@ -14,3 +14,10 @@
  * * os.homedir(): Returns the home directory of the current user.
  * * os.tmpdir(): Returns the default directory for temporary files.
  */
+
+import os from "os";
+
+const os_name: string = os.platform();
+console.log("os_name: ", os_name); // OUTPUT: os_name: linux
+console.log(os.arch());
+console.log(os.uptime());
