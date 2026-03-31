@@ -61,3 +61,23 @@ console.log(buffer.toString()); //OUTPUT: I am a programmer
 const bufferConcat1: Buffer = Buffer.concat([buff, buffer]);
 console.log("Buffer Concatenated to string: ", bufferConcat1.toString()); //OUTPUT: Buffer Concatenated to string:  Hello, World! I am a programmer
 console.log("Buffer Concatenated: ", bufferConcat1) //OUTPUT: Buffer Concatenated:  <Buffer 48 65 6c 6c 6f 2c 20 57 6f 72 6c 64 21 20 49 20 61 6d 20 61 20 70 72 6f 67 72 61 6d 6d 65 72>
+
+/**
+ * BUFFER METHODS:
+ * * Buffer.from() - Creates a new buffer from a string or an array of bytes.
+ * * Buffer.alloc() - Creates a new buffer of a specific size.
+ * * Buffer.write() - Writes data to a buffer.
+ * * Buffer.toString() - Converts a buffer to a string.
+ * * Buffer.concat() - Concatenates multiple buffers into one buffer.
+ * * Buffer.slice() - Slices a buffer into a new buffer.
+ * * Array.from() - Converts a buffer to an array of bytes.
+ * * Buffer.compare() - Compares two buffers and returns a number indicating whether the first buffer comes before, after, or is the same as the second buffer.
+ * * Buffer.copy() - Copies data from one buffer to another buffer.
+ * * Buffer.fill() - Fills a buffer with a specified value.
+ * * Buffer.isBuffer() - Checks if an object is a buffer.
+ * * Buffer.byteLength() - Returns the number of bytes in a buffer.
+ * * Buffer.allocUnsafe() - Creates a new buffer of a specific size without initializing it, which can be faster but may contain old data.
+ * * Buffer.allocUnsafeSlow() - Creates a new buffer of a specific size without initializing it, which can be slower but is safer than Buffer.allocUnsafe().
+ * * Buffer.isEncoding() - Checks if a string is a valid encoding.
+ * * Buffer.isBuffer() - Checks if an object is a buffer.
+ */
