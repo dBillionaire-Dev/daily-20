@@ -17,3 +17,18 @@
  * * process.stderr: A writable stream to stderr (standard error).
  * * process.stdin: A readable stream from stdin (standard input).
  *
+ * HOW TO USE THE PROCESS MODULE?
+ * You can use the Process module to access information about the current process, handle events, and control the process flow.
+ * For example:
+ * * console.log(process.argv); // Output: [ 'node', 'script.js', 'arg1', 'arg2' ]
+ * * console.log(process.env); // Output: { PATH: '/usr/local/bin', HOME: '/home/user', ... }
+ * * process.exit(0); // Ends the process with code 0 (success)
+ * * console.log(process.cwd()); // Output: /home/user/project
+ * * console.log(process.pid); // Output: 12345
+ * * console.log(process.version); // Output: v14.17.0
+ * * console.log(process.memoryUsage()); // Output: { rss: 12345678, heapTotal: 12345678, heapUsed: 12345678, external: 12345678 }
+ * * process.on('exit', (code) => { console.log(`Process exited with code ${code}`); });
+ * * process.nextTick(() => { console.log('This will be executed in the next iteration of the event loop'); });
+ *
+ * The Process module is essential for managing and controlling the Node.js process, and it provides a wide range of functionalities for working with the process environment and events.
+ */
