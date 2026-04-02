@@ -48,6 +48,6 @@ process.on('exit', (code) => {
     console.log(`Process exited with code ${code}`);
 });
 
-process.nextTick(() => {
+process.nextTick((): void => {
     console.log('This will be executed in the next iteration of the event loop');
 });
