@@ -44,10 +44,14 @@ console.log("Process ID: ", process.pid);
 console.log("Node.js version: ", process.version);
 console.log("Memory usage: ", process.memoryUsage());
 
-process.on('exit', (code) => {
+process.on('exit', (code: number): void => {
     console.log(`Process exited with code ${code}`);
 });
 
 process.nextTick((): void => {
     console.log('This will be executed in the next iteration of the event loop');
 });
+
+/**
+ * OUTPUT:
+ */
