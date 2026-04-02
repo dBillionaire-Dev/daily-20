@@ -1,7 +1,9 @@
 /**
  * PROCESS MODULE IN NODE.JS
- * The Process module provides information about, and control over, the current Node.js process. It can be accessed using:
- * * import process from 'process';
+ * The Process module provides information about, and control over, the current Node.js process.
+ * It can be accessed using:
+ *
+ *      import process from 'process';
  *
  * Some of the commonly used properties and methods in the Process module include:
  * * process.argv: An array containing the command-line arguments passed when the Node.js process was launched.
@@ -32,3 +34,20 @@
  *
  * The Process module is essential for managing and controlling the Node.js process, and it provides a wide range of functionalities for working with the process environment and events.
  */
+
+import process from "process";
+
+console.log("Process arguments: ", process.argv);
+console.log("Environment variables: ", process.env);
+console.log("Current working directory: ", process.cwd());
+console.log("Process ID: ", process.pid);
+console.log("Node.js version: ", process.version);
+console.log("Memory usage: ", process.memoryUsage());
+
+process.on('exit', (code) => {
+    console.log(`Process exited with code ${code}`);
+});
+
+process.nextTick(() => {
+    console.log('This will be executed in the next iteration of the event loop');
+});
