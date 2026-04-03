@@ -10,20 +10,16 @@
  */
 
 import express, { type Request, type Response, type Application } from "express";
+import routes from "./routes/routes.js";
 
 const app: Application = express();
 const PORT = 3000;
 
 app.use(express.json());
+const appRouter = routes;
 
-app.get("/", (req: Request, res: Response): void => {
-    res.send("Hello, Express!");
-});
-
-app.post("/data", (req: Request, res: Response): void => {
-    const data = req.body;
-    res.json({ message: "Data received", data });
-});
+app.use("/", appRouter);
+app.use("/about", appRouter);
 
 app.use((err: Error, req: Request, res: Response): void => {
     console.error(err.stack);
