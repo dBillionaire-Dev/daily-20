@@ -5,7 +5,7 @@ import path from "path";
 const __filename: string = fileURLToPath(import.meta.url);
 const __dirname: string = path.dirname(__filename);
 const newFile: string = path.join(__dirname, "week.md");
-const newDirectory: string = path.join(__dirname, "buffers");
+const newDirectory: string = path.join(__dirname, "express-concepts");
 
 const createFile = async (): Promise<void> => {
     try {
