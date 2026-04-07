@@ -42,7 +42,7 @@
  *      JSON / JSONB  -- store JSON data           (JSONB is faster and searchable — prefer it)
  *
  *
- * A real-world example — a `users` table for a web app:
+ * A real-world example: a `users` table for a web app:
  *
  *      CREATE TABLE users (
  *           id          SERIAL PRIMARY KEY,
