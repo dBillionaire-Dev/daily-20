@@ -77,3 +77,44 @@ INSERT INTO users (name, email, username, password_hash) VALUES
 ('Bob Johnson', 'bobjones@gmail.com', 'bob', 'password_hash_here'),
 ('Charlie Brown', 'charlieb@apple.com', 'charlie', 'password_hash_here');
 RETURNING id, email;
+
+-- READING DATA IN POSTGRESQL
+
+-- Get every user info (avoid doing this in production, as it can be inefficient and may expose sensitive data)
+SELECT * FROM users;
+
+-- Get specific columns only from every user (better practice)
+SELECT id, email, username FROM users;
+
+-- Get one specific user
+SELECT * FROM users WHERE email = 'nezer@nex.com';
+
+-- Get all published posts
+SELECT * FROM posts WHERE published = true;
+
+-- Get all posts by a specific user (using the foreign key)
+SELECT * FROM posts WHERE user_id = 1;
+
+-- * means all columns
+
+-- RETURNING, Super useful for backends
+
+/**
+  When you insert a row, by default Postgres doesn't send it back.
+  But in a Node.js API, you almost always want the new record returned (especially the auto-generated id).
+  In PostgreSQL, you can use the `RETURNING` clause to achieve this.
+
+    The syntax looks like this:
+
+          INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...) RETURNING column_to_return;
+
+    For example, if you want to insert a new user and get back their ID and email, you can do:
+
+          INSERT INTO users (name, email, username, password_hash)
+            VALUES ('Nezer Nex', 'nezer@nex.com', 'nezer', 'password_hash_here')
+            RETURNING id, email, username, created_at;
+
+  This gives you back the inserted row immediately, no need for a second query.
+  In Express, this is how you'd respond to a POST /users request with the created user object.
+  Refer to the Express code for more details.
+ */
