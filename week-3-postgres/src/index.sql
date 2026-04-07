@@ -118,3 +118,61 @@ SELECT * FROM posts WHERE user_id = 1;
   In Express, this is how you'd respond to a POST /users request with the created user object.
   Refer to the Express code for more details.
  */
+
+-- ADDING A COLUMN TO AN EXISTING TABLE IN POSTGRESQL
+/**
+    The syntax looks like this:
+
+          ALTER TABLE table_name ADD COLUMN column_name DATA_TYPE CONSTRAINTS;
+
+  The ALTER TABLE statement is used to modify the structure of an existing table.
+  In this case, we are adding a new column to the `users` table.
+  And the ADD COLUMN statement specifies that we want to add a new column with the given name, data type, and any constraints.
+ */
+
+-- For example, if we want to add a `bio` column to the `users` table, we can do:
+
+ALTER TABLE users
+ADD COLUMN bio TEXT NOT NULL;
+
+-- FILTERING ROWS
+-- The WHERE statement lets you fetch only the rows that match a condition.
+
+-- EXAMPLE USAGE
+-- Exact match
+SELECT * FROM users WHERE email = 'alicesmith@email.com';
+
+-- Not equal
+SELECT * FROM posts WHERE published != false;
+
+-- Greater / less than
+SELECT * FROM users WHERE id > 3;
+SELECT * FROM users WHERE created_at < '2026-04-07';
+
+-- Multiple conditions with AND / OR
+SELECT * FROM posts WHERE published = true AND user_id = 1;
+SELECT * FROM users WHERE username = 'nex_dev' OR username = 'grace_hop';
+
+-- LIKE operator for pattern matching
+SELECT * FROM users WHERE email LIKE '%@gmail.com'; -- finds all users with a gmail email
+SELECT * FROM users WHERE username LIKE 'a%'; -- finds all users whose username starts with 'a'
+SELECT * FROM users WHERE username LIKE '%e%'; -- finds all users whose username contains 'e'
+-- % is a wildcard meaning "anything here".
+-- One limitation — LIKE is case-sensitive.
+-- For case-insensitive search, Postgres has ILIKE:
+-- Matches 'Postgres', 'POSTGRES', 'postgres', etc.
+SELECT * FROM posts WHERE title ILIKE '%postgres%';
+-- Matches only 'postgres'.
+SELECT * FROM posts WHERE title LIKE '%postgres%';
+
+
+-- IN operator for matching against a list of values
+SELECT * FROM users WHERE id IN (1, 2, 5); -- finds users
+-- instead of a messy: SELECT * FROM users WHERE id = 1 OR id = 2 OR id = 5;
+-- Opposite — exclude a list
+SELECT * FROM posts WHERE user_id NOT IN (3, 4);
+-- In a real API, IN is great for batch lookups — "fetch all posts by these user IDs".
+
+-- BETWEEN operator for range queries
+SELECT * FROM users WHERE created_at BETWEEN '2026-01-01' AND '2026-12-31'; -- finds users created in 2026
+SELECT * FROM posts WHERE id BETWEEN 10 AND 20; -- finds posts with IDs from 10 to 20
