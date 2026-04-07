@@ -97,9 +97,9 @@ SELECT * FROM posts WHERE user_id = 1;
 
 -- * means all columns
 
--- RETURNING, Super useful for backends
-
 /**
+  RETURNING, Super useful for backends
+
   When you insert a row, by default Postgres doesn't send it back.
   But in a Node.js API, you almost always want the new record returned (especially the auto-generated id).
   In PostgreSQL, you can use the `RETURNING` clause to achieve this.
@@ -159,9 +159,11 @@ SELECT * FROM users WHERE username LIKE 'a%'; -- finds all users whose username 
 SELECT * FROM users WHERE username LIKE '%e%'; -- finds all users whose username contains 'e'
 -- % is a wildcard meaning "anything here".
 -- One limitation — LIKE is case-sensitive.
--- For case-insensitive search, Postgres has ILIKE:
+-- For case-insensitive search, Postgres has ILIKE, for example:
+
 -- Matches 'Postgres', 'POSTGRES', 'postgres', etc.
 SELECT * FROM posts WHERE title ILIKE '%postgres%';
+
 -- Matches only 'postgres'.
 SELECT * FROM posts WHERE title LIKE '%postgres%';
 
@@ -176,3 +178,41 @@ SELECT * FROM posts WHERE user_id NOT IN (3, 4);
 -- BETWEEN operator for range queries
 SELECT * FROM users WHERE created_at BETWEEN '2026-01-01' AND '2026-12-31'; -- finds users created in 2026
 SELECT * FROM posts WHERE id BETWEEN 10 AND 20; -- finds posts with IDs from 10 to 20
+
+-- IS NULL / IS NOT NULL for checking null values
+SELECT * FROM users WHERE bio IS NULL; -- finds users without a bio
+SELECT * FROM users WHERE bio IS NOT NULL; -- finds users with a bio
+/**
+  NULL means "no value", and you can't use = to check for it:
+  SELECT * FROM users WHERE bio = NULL;  <== WRONG — this won't work
+
+  This trips up a lot of beginners.
+  In Postgres, NULL is not a value, it's the absence of one, so normal equality checks don't apply.
+ */
+
+-- ORDER BY - Sorting results
+SELECT * FROM posts ORDER BY created_at DESC -- Newest posts first (Descending order)
+SELECT * FROM posts ORDER BY created_at ASC -- Oldest posts first (Ascending order) - Default
+SELECT * FROM users ORDER BY username ASC --Alphabetical orders of username
+-- Most APIs default to newest-first, so ORDER BY created_at DESC will be the most-used pattern.
+
+-- LIMIT and OFFSET (Pagination) - Restricting the number of results
+SELECT * FROM posts ORDER BY created_at DESC LIMIT 10; -- Get the 10 most recent posts (Page 1)
+SELECT * FROM posts ORDER BY created_at DESC LIMIT 10 OFFSET 10; -- Get the next 10 recent posts (Page 2)
+SELECT * FROM posts ORDER BY created_at DESC LIMIT 10 OFFSET 20; -- Get the next 10 recent posts (Page 3)
+SELECT * FROM users ORDER BY created_at ASC LIMIT 5; -- Get the 5 oldest users
+SELECT * FROM users WHERE email LIKE '%@gmail.com' LIMIT 20; -- Get up to 20 users with a gmail email
+-- OFFSET skips that many rows before starting.
+-- The formula for any page number is:
+OFFSET = (page - 1) * limit
+
+-- PUTTING TOGETHER
+SELECT id, title, user_id, created_at
+FROM posts
+WHERE published = true
+  AND title ILIKE '%node%'
+ORDER BY created_at DESC
+    LIMIT 5;
+-- The above gets the five most recent published posts with "node" in the title,
+-- showing only the id, title, user_id, and created_at columns.
+-- Refer to express file for more.

@@ -32,3 +32,27 @@ app.post("/users", async (req: Request, res: Response): Promise<void> => {
  * This is how you prevent SQL injection.
  * Never concatenate user input directly into a query string.
  */
+
+app.get('/posts', async (req: Request, res: Response): Promise<void> => {
+    try {
+        const page: number  = parseInt(req.query.page)  || 1;
+        const limit: number = parseInt(req.query.limit) || 10;
+        const offset: number = (page - 1) * limit;
+
+        const result = await db.query(
+            `SELECT id, title, created_at FROM posts
+             WHERE published = true
+             ORDER BY created_at DESC
+             LIMIT $1 OFFSET $2`,
+                    [limit, offset]
+                );
+
+        res.status(200).json(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            success: false,
+            message: "Internal server error"
+        });
+    }
+});
