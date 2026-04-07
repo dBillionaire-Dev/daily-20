@@ -10,10 +10,10 @@
  *
  * Why Postgres specifically?
  *
- * Free and open source
- * Extremely reliable; used by Instagram, Reddit, Shopify, GitHub
- * Handles everything from tiny side projects to massive production systems
- * Has powerful features most databases don't (JSON support, full-text search, and more)
+ * * Free and open source
+ * * Extremely reliable; used by Instagram, Reddit, Shopify, GitHub
+ * * Handles everything from tiny side projects to massive production systems
+ * * Has powerful features most databases don't (JSON support, full-text search, and more)
  *
  * How it's structured
  *
@@ -24,8 +24,9 @@
  *            └── Tables (e.g. "users", "posts", "comments")
  *                └── Rows (each row = one record, e.g. one user)
  *
- *  A table is like a spreadsheet tab.
- *  A row is one entry in that table. A column defines what kind of info each row stores.
+ * * A table is like a spreadsheet tab.
+ * * A row is one entry in that table.
+ * * A column defines what kind of info each row stores.
  *
  * For example, a users table might look like this:
  *
@@ -36,8 +37,11 @@
  * Every user is a row. Every piece of info about them (id, name, email) is a column.
  *
  * How you talk to Postgres
+ *
  * You use a language called SQL (Structured Query Language).
  * It's not a programming language like Python, it's a query language, meaning you use it to ask questions and give instructions to the database.
+ *
+ * Example:
  *
  *      -- Ask the database for all users
  *      SELECT * FROM users;
