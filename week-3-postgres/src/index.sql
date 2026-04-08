@@ -11,7 +11,7 @@
 CREATE TABLE users (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE CHECK ( email = LOWER(email), email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$' ),
+    email VARCHAR(255) NOT NULL UNIQUE CHECK ( email = LOWER(email) AND email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$' ),
     username    VARCHAR(50)  NOT NULL UNIQUE,
     password_hash TEXT NOT NULL,
     is_verified BOOLEAN      DEFAULT false,
@@ -216,3 +216,4 @@ ORDER BY created_at DESC
 -- The above gets the five most recent published posts with "node" in the title,
 -- showing only the id, title, user_id, and created_at columns.
 -- Refer to express file for more.
+-- More lessons on postgres.sql (This file is too long)
