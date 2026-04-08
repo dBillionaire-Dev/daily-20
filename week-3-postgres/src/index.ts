@@ -58,3 +58,34 @@ app.get('/posts', async (req: Request, res: Response): Promise<void> => {
 });
 
 // UPDATING RECORDS
+app.patch('/users/:id', async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const { username } = req.body;
+
+        const result = await db.query(
+            `UPDATE users SET username = $1
+         WHERE id = $2
+         RETURNING id, email, username`,
+            [username, id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        res.json(result.rows[0]);
+    } catch (e) {
+        console.error(e)
+        res.status(500).json({
+            success: false,
+            message: "Internal server error"
+        });
+    }
+});
+
+/**
+ * Notice the rows.length === 0
+ * check if the WHERE matched nothing, Postgres returns an empty array.
+ * That's how you detect "record not found" in your API.
+ */
