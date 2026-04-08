@@ -10,6 +10,17 @@ CREATE TABLE users (
     updated_at  TIMESTAMPTZ  DEFAULT NOW()
 );
 
+CREATE TABLE posts (
+   id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+   title VARCHAR(255) NOT NULL,
+   content TEXT NOT NULL,
+   user_id INT NOT NULL,
+   published BOOLEAN DEFAULT false,
+   created_at TIMESTAMPTZ DEFAULT NOW(),
+   updated_at TIMESTAMPTZ DEFAULT NOW(),
+   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
 /**
   UPDATING DATA IN SQL:
   This is where bugs can get expensive. a bad update can corrupt records.
@@ -67,3 +78,35 @@ WHERE id = 1
 RETURNING id, email, is_verified; -- Always make it a habit to return after INSERT and UPDATE
 
 -- REFER TO LINE 60 IN index.ts for Express examples
+
+/**
+  DELETING ROWS:
+
+  The syntax looks like this:
+
+  DELETE FROM table_name WHERE condition;
+
+  Example below:
+ */
+
+-- Delete a user by id
+DELETE FROM users
+WHERE id = 2;
+
+-- Delete all unpublished posts older than 30 days
+DELETE FROM posts
+WHERE published = false AND created_at < NOW() - INTERVAL '30 days';
+
+-- DANGERS WHILE USING THE DELETE STATEMENT
+-- Just like with UPDATE, if you forget the WHERE clause, you will delete every record in the table.
+-- Always double-check your DELETE statements before executing them, especially if they don't have a WHERE clause.
+
+-- Missing WHERE clause
+DELETE FROM users; -- Every single user is now gone. FOREVER!!!
+
+-- Same rule, always run the SELECT first, confirm the rows, then delete.
+
+-- RETURNING WITH DELETE, Useful for backends to confirm what was deleted
+DELETE FROM users
+WHERE id = 3
+RETURNING id, email; -- This will return the id and email of the deleted user, which can be useful for confirming the deletion in an API response.
