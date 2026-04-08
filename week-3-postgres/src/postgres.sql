@@ -170,3 +170,22 @@ WHERE deleted_at IS NULL;
 UPDATE users
 SET deleted_at = NULL
 WHERE id = 4;
+
+-- TRUNCATE - Wiping an entire table (use with caution, as it cannot be rolled back and will delete all data in the table)
+-- Use only in dev, not in production, unless you are absolutely sure you want to delete all records in the table.
+TRUNCATE TABLE posts;
+-- This will delete all posts in the posts table, but it will not affect the users table.
+-- It will reset any auto-incrementing IDs back to their initial value.
+-- Use this when you want to quickly clear out a table without deleting the table itself.
+
+-- To delete a table, use the DROP statement:
+DROP TABLE posts;
+
+/**
+  The Golden Rules:
+
+    Always have a WHERE on UPDATE and DELETE
+    Run SELECT first to preview what you'll affect
+    Use soft delete in production apps
+    Use RETURNING to avoid extra roundtrips in your API
+ */
