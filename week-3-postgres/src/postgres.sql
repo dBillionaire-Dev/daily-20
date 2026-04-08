@@ -110,3 +110,63 @@ DELETE FROM users; -- Every single user is now gone. FOREVER!!!
 DELETE FROM users
 WHERE id = 3
 RETURNING id, email; -- This will return the id and email of the deleted user, which can be useful for confirming the deletion in an API response.
+
+/**
+  CASCADE DELETES:
+
+  When you have foreign key relationships, you can set up cascading deletes.
+  This means that when you delete a record in the parent table, all related records in the child table will also be deleted automatically.
+
+  In our posts table, we have a foreign key to users with ON DELETE CASCADE.
+  This means that if we delete a user, all their posts will also be deleted automatically.
+ */
+
+/**
+  SOFT DELETE: THE PRODUCTION PATTERN
+    In production applications, we often don't want to permanently delete records from the database.
+    Instead, we use a "soft delete" approach, where we add a boolean column like `is_deleted` to the table.
+    When we want to "delete" a record, we set `is_deleted` to true instead of actually deleting the row.
+    This way, we can keep the data for historical purposes, and we can also easily restore
+    accidentally "deleted" records by setting `is_deleted` back to false.
+
+  The syntax for a soft delete would look like this:
+ */
+
+-- Add the is_deleted column to the users table
+ALTER TABLE users
+ADD COLUMN is_deleted BOOLEAN DEFAULT false;
+
+-- Soft delete a user by setting is_deleted to true
+UPDATE users
+SET is_deleted = true
+WHERE id = 1;
+
+-- To query only active (non-deleted) users, you would add a condition to your SELECT statements:
+SELECT * FROM users
+WHERE is_deleted = false;
+
+-- Restore a deleted user
+UPDATE users
+SET is_deleted = false
+WHERE id = 1;
+
+-- OR, instead of a boolean, you can use a timestamp column like `deleted_at` to track when a record was deleted.
+-- This way, you can also see when the deletion occurred and easily restore records by setting `deleted_at` back to NULL.
+
+-- Add a deleted_at column to your table
+ALTER TABLE users
+ADD COLUMN deleted_at TIMESTAMPTZ DEFAULT NULL;
+
+-- "Delete" a user (soft)
+UPDATE users
+SET deleted_at = NOW()
+WHERE id = 4;
+
+-- Query only active users (not deleted)
+SELECT * FROM users
+WHERE deleted_at IS NULL;
+
+-- Restore a deleted user
+UPDATE users
+SET deleted_at = NULL
+WHERE id = 4;
