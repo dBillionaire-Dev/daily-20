@@ -37,5 +37,41 @@
  *   - A foreign key is a column or a set of columns in one table that references the primary key of another table.
  *   - It establishes a relationship between two tables, allowing you to enforce referential integrity.
  *   - A foreign key can contain duplicate values and can contain NULL values (if the relationship is optional).
+ *
+ *          CREATE TABLE posts (
+ *              id         SERIAL PRIMARY KEY,
+ *              title      VARCHAR(255) NOT NULL,
+ *              body       TEXT NOT NULL,
+ *              user_id    INT NOT NULL REFERENCES users(id), -- FOREIGN KEY referencing users table
+ *              created_at TIMESTAMPTZ DEFAULT NOW()
+ *          );
+ *
+ *  REFERENCES users(id) is the foreign key. It tells Postgres: "the value in this column must exist as an id in the users table."
+ *  This means:
+ * * You cannot insert a post with a user_id that doesn't exist in users
+ * * Postgres enforces this automatically, no bad data gets in
+ *
+ * ON DELETE — What Happens When the Parent is Deleted?
+ * - This is a critical decision. What should happen to a user's posts if that user is deleted?
+ *
+ *          -- Option 1: CASCADE — delete the posts too
+ *          user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE
+ *
+ *          -- Option 2: SET NULL — orphan the posts (keep them, clear the user link)
+ *          user_id INT REFERENCES users(id) ON DELETE SET NULL
+ *
+ *          -- Option 3: RESTRICT — block the deletion entirely (default)
+ *          user_id INT NOT NULL REFERENCES users(id) ON DELETE RESTRICT
+ *
+ *  USE CASES:
+ *  - For a blog app, CASCADE makes sense. If a user is deleted, their posts go too.
+ *  - For something like an orders table in an e-commerce app, you'd use RESTRICT. You never want to delete a user if they have orders.
+ */
+
+/**
+ * THREE TYPES OF RELATIONSHIPS:
+ * 1. One-to-One (1:1)
+ *    - Each record in Table A is related to one and only one record in Table B, and vice versa.
+ *    - Example: A user has one profile, and a profile belongs to one user.
  */
 
