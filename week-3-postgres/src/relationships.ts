@@ -9,10 +9,10 @@
  *   - A primary key can be a single column or a combination of columns (composite key).
  *   - It must contain unique values and cannot contain NULL values.
  *
- *      For example, in a "users" table, the "id" column is often used as the primary key to uniquely identify each user.
- *      In a "posts" table, the "id" column can also serve as the primary key to uniquely identify each post.
- *      In a "comments" table, you might have a composite primary key consisting of "post_id" and "comment_id" to uniquely identify each comment for a specific post.
- *      In a "categories" table, the "id" column can be the primary key to uniquely identify each category.
+ *      * For example, in a "users" table, the "id" column is often used as the primary key to uniquely identify each user.
+ *          - In a "posts" table, the "id" column can also serve as the primary key to uniquely identify each post.
+ *          - In a "comments" table, you might have a composite primary key consisting of "post_id" and "comment_id" to uniquely identify each comment for a specific post.
+ *          - In a "categories" table, the "id" column can be the primary key to uniquely identify each category.
  *
  *
  *      CREATE TABLE users (
