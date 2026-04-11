@@ -73,5 +73,39 @@
  * 1. One-to-One (1:1)
  *    - Each record in Table A is related to one and only one record in Table B, and vice versa.
  *    - Example: A user has one profile, and a profile belongs to one user.
+ *
+ *    Example:
+ *
+ *          CREATE TABLE profiles (
+ *          id       SERIAL PRIMARY KEY,
+ *          user_id  INT NOT NULL UNIQUE REFERENCES users(id) ON DELETE CASCADE,
+ *          bio      TEXT,
+ *          avatar   VARCHAR(255)
+ *          );
+ * * The UNIQUE constraint on user_id is what makes it one-to-one.
+ * * It prevents two profiles from pointing to the same user.
+ *
+ * 2. One-to-many (1:M)
+ *      - One user has many posts. One post belongs to one user.
+ *
+ *      Example:
+ *
+ *          CREATE TABLE users (
+ *          id    SERIAL PRIMARY KEY,
+ *          email VARCHAR(255) NOT NULL UNIQUE
+ *          );
+ *
+ *          CREATE TABLE posts (
+ *          id      SERIAL PRIMARY KEY,
+ *          title   VARCHAR(255) NOT NULL,
+ *          user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE
+ *          );
+ *
+ * The foreign key always goes on the "many" side — posts has user_id, not the other way around.
+ *
+ *      users         posts
+ *      ------        ------
+ *      id ◄──────── user_id
+ *      email         title
  */
 
