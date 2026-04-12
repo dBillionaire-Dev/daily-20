@@ -107,5 +107,31 @@
  *      ------        ------
  *      id ◄──────── user_id
  *      email         title
+ *
+ * 3. Many-to-Many relationships (M:M)
+ *      - A post can have many tags.
+ *      - A tag can belong to many posts.
+ *      - You can't model this with just two tables — you need a junction table (also called a join table or pivot table):
+ *
+ *
+ *      CREATE TABLE tags (
+ *      id   SERIAL PRIMARY KEY,
+ *      name VARCHAR(50) NOT NULL UNIQUE
+ *      );
+ *
+ *      CREATE TABLE post_tags (
+ *      post_id INT NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
+ *      tag_id  INT NOT NULL REFERENCES tags(id)  ON DELETE CASCADE,
+ *      PRIMARY KEY (post_id, tag_id)  -- composite primary key, prevents duplicates
+ *      );
+ *
+ *  - post_tags is the junction table. Each row says "this post has this tag".
+ *  - The composite primary key ensures the same post can't have the same tag twice.
+ *
+ *          posts              post_tags           tags
+ *          -----              ---------           ----
+ *          id ◄────────────── post_id
+ *                              tag_id ────────────► id
+ *                                                  name
  */
 
