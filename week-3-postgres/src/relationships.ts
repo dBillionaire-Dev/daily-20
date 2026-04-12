@@ -135,3 +135,50 @@
  *                                                  name
  */
 
+/**
+ * Putting It All Together
+ * Here's the full schema for a mini blog app — everything connected properly:
+ *
+ *          CREATE TABLE users (
+ *          id         SERIAL PRIMARY KEY,
+ *          email      VARCHAR(255) NOT NULL UNIQUE,
+ *          username   VARCHAR(50)  NOT NULL UNIQUE,
+ *          password   TEXT         NOT NULL,
+ *          created_at TIMESTAMPTZ  DEFAULT NOW()
+ *          );
+ *
+ *          CREATE TABLE posts (
+ *          id         SERIAL PRIMARY KEY,
+ *          title      VARCHAR(255) NOT NULL,
+ *          body       TEXT         NOT NULL,
+ *          user_id    INT          NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+ *          published  BOOLEAN      DEFAULT false,
+ *          created_at TIMESTAMPTZ  DEFAULT NOW()
+ *          );
+ *
+ *          CREATE TABLE comments (
+ *          id         SERIAL PRIMARY KEY,
+ *          body       TEXT NOT NULL,
+ *          user_id    INT  NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+ *          post_id    INT  NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
+ *          created_at TIMESTAMPTZ DEFAULT NOW()
+ *          );
+ *
+ *          CREATE TABLE tags (
+ *          id   SERIAL PRIMARY KEY,
+ *          name VARCHAR(50) NOT NULL UNIQUE
+ *          );
+ *
+ *          CREATE TABLE post_tags (
+ *          post_id INT NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
+ *          tag_id  INT NOT NULL REFERENCES tags(id)  ON DELETE CASCADE,
+ *          PRIMARY KEY (post_id, tag_id)
+ *          );
+ */
+
+
+
+
+
+
+
