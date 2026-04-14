@@ -1,6 +1,6 @@
-# 📘 Week 4: PostgreSQL + Node.js Integration (TypeScript) - 11th April 2026 - 17th April, 2026
+# Week 4: PostgreSQL + Node.js Integration (TypeScript) - 11th April 2026 - 17th April, 2026
 
-## 🚀 Overview
+## Overview
 Week 4 builds on the PostgreSQL fundamentals learned in Week 3, where core concepts like tables, primary keys (PK), foreign keys (FK), and relationships were introduced.
 
 This week focuses on:
@@ -11,7 +11,7 @@ This week focuses on:
 
 ---
 
-## ✅ Week 3 Recap
+## Week 3 Recap
 
 Covered foundational PostgreSQL concepts:
 
@@ -22,7 +22,7 @@ Covered foundational PostgreSQL concepts:
 
 ---
 
-## 🎯 Week 4 Goals
+## Week 4 Goals
 
 - Master SQL joins and relational queries
 - Understand constraints and indexing
@@ -32,7 +32,7 @@ Covered foundational PostgreSQL concepts:
 
 ---
 
-## 🧠 PostgreSQL Concepts (Advanced)
+## PostgreSQL Concepts (Advanced)
 
 ### 1. SQL Joins (Critical)
 
@@ -70,7 +70,7 @@ Purpose:
 
 ---
 
-## ⚙️ Node.js + PostgreSQL Integration
+## Node.js + PostgreSQL Integration
 
 ### Tools Used
 
@@ -116,15 +116,15 @@ console.log(result.rows);
 
 ---
 
-## 🛠️ Week 4 Project
+## Week 4 Project
 
-### 📌 Task Manager API (Database-Driven)
+### Task Manager API (Database-Driven)
 
 A backend API that manages users and tasks using PostgreSQL.
 
 ---
 
-## 🧱 Database Schema
+## Database Schema
 
 ```sql
 CREATE TABLE users (
@@ -142,7 +142,7 @@ CREATE TABLE tasks (
 
 ---
 
-## 🔗 Example Query (JOIN)
+## Example Query (JOIN)
 
 ```sql
 SELECT tasks.title, users.name
@@ -152,7 +152,7 @@ JOIN users ON tasks.user_id = users.id;
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```bash
 src/
@@ -167,7 +167,7 @@ src/
 
 ---
 
-## 📌 Features to Implement
+## Features to Implement
 
 - Create user
 - Get users
@@ -177,7 +177,7 @@ src/
 
 ---
 
-## 🧪 Practice Tasks
+## Practice Tasks
 
 - Write queries using JOIN
 - Add constraints to tables
@@ -187,7 +187,7 @@ src/
 
 ---
 
-## 🎯 End of Week Outcome
+## End of Week Outcome
 
 By the end of Week 4, you should be able to:
 
@@ -200,7 +200,7 @@ By the end of Week 4, you should be able to:
 
 ---
 
-## 🔜 Next Week Preview (Week 5)
+## Next Week Preview (Week 5)
 
 - Introduction to NestJS
 - Modules, Controllers, Services
@@ -209,7 +209,7 @@ By the end of Week 4, you should be able to:
 
 ---
 
-## 💡 Notes
+## Notes
 
 - Focus on understanding relationships and queries deeply
 - Always test queries directly in PostgreSQL before using in code
