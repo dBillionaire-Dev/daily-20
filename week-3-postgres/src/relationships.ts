@@ -85,7 +85,7 @@
  * * The UNIQUE constraint on user_id is what makes it one-to-one.
  * * It prevents two profiles from pointing to the same user.
  *
- * 2. One-to-many (1:M)
+ * 2. One-to-many (1:N)
  *      - One user has many posts. One post belongs to one user.
  *
  *      Example:
@@ -108,7 +108,7 @@
  *      id ◄──────── user_id
  *      email         title
  *
- * 3. Many-to-Many relationships (M:M)
+ * 3. Many-to-Many relationships (M:N)
  *      - A post can have many tags.
  *      - A tag can belong to many posts.
  *      - You can't model this with just two tables — you need a junction table (also called a join table or pivot table):
