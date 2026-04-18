@@ -58,7 +58,36 @@
  * This makes the query cleaner and easier to read, especially with longer table names or multiple joins.
  *
  * Other Types of Joins:
- * - LEFT JOIN (or LEFT OUTER JOIN): Returns all rows from the left table, and the matched rows from the right table. If there is no match, the result is NULL on the right side.
+ * - LEFT JOIN (or LEFT OUTER JOIN): Returns all rows from the left table, and the matched rows from the right table.
+ * If there is no match, the result is NULL on the right side.
+ *
+ *         SELECT
+ *           u.username,
+ *           p.title
+ *         FROM users u
+ *         LEFT JOIN posts p ON p.user_id = u.id;
+ *         -- This will return all users, and their post titles if they have any.
+ *         -- If a user has no posts, the title will be NULL.
+ *
+ * When to use it: when the relationship is optional.
+ * "Give me all users and their posts if they have any."
+ *
+ *      INNER JOIN vs LEFT JOIN:
+ *
+ *      users table          posts table
+ *      -----------          -----------
+ *      id=1 ada             id=1 user_id=1  "My first post"
+ *      id=2 grace           id=2 user_id=1  "Second post"
+ *      id=3 alan            (no posts)
+ *
+ *      INNER JOIN result:        LEFT JOIN result:
+ *      ada   | My first post     ada   | My first post
+ *      ada   | Second post       ada   | Second post
+ *      grace | (excluded)        grace | NULL
+ *      alan  | (excluded)        alan  | NULL
+ *
+ *  In practice, most backend developers use INNER JOIN and LEFT JOIN for 95% of everything.
+ *
  * - RIGHT JOIN (or RIGHT OUTER JOIN): Returns all rows from the right table, and the matched rows from the left table. If there is no match, the result is NULL on the left side.
  * - FULL JOIN (or FULL OUTER JOIN): Returns all rows when there is a match in either left or right table. If there is no match, the result is NULL on the side that does not have a match.
  * - CROSS JOIN: Returns the Cartesian product of both tables, meaning it returns all possible combinations of rows from both tables.
