@@ -36,4 +36,11 @@
  *
  * * The GROUP BY clause groups rows that have the same values in specified columns into summary rows.
  * * It is often used with aggregate functions to group the result set by one or more columns.
+ * * * For example, to count how many posts each user has published:
+ *
+ *
+ *      SELECT user_id, COUNT(*) AS post_count
+ *      FROM posts
+ *      WHERE published = true
+ *      GROUP BY user_id;
  */
