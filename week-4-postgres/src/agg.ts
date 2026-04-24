@@ -43,4 +43,20 @@
  *      FROM posts
  *      WHERE published = true
  *      GROUP BY user_id;
+ *
+ *      RESULTS:
+ *      user_id | post_count
+ *      --------|----------
+ *      1       | 5
+ *      2       | 2
+ *      3       | 8
+ *
+ */
+
+/**
+ * HAVING:
+ * * The HAVING clause is used to filter groups created by the GROUP BY clause based on a specified condition.
+ * * It is similar to the WHERE clause, but WHERE filters rows before grouping, while HAVING filters groups after they have been formed.
+ *
+ *
  */
