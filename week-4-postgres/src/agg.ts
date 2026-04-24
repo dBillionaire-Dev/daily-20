@@ -26,4 +26,14 @@
  *      SELECT COUNT(*) FROM users
  *      WHERE created_at >= CURRENT_DATE;
  *
+ *  COUNT(*) counts all rows.
+ *  COUNT(column) counts only rows where that column is not NULL, a subtle but important difference.
+ *
+ */
+
+/**
+ * GROUP BY:
+ *
+ * * The GROUP BY clause groups rows that have the same values in specified columns into summary rows.
+ * * It is often used with aggregate functions to group the result set by one or more columns.
  */
