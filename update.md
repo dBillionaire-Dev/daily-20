@@ -1,4 +1,4 @@
-# 20-Week Career-Ready Full-Stack Roadmap
+# 25-Week Career-Ready Full-Stack Roadmap
 
 ---
 
@@ -6,7 +6,7 @@
 
 **Goal:** Solidify TypeScript, Node.js, and PostgreSQL fundamentals.
 
-### Weeks 1–2: TypeScript & Node.js Essentials
+### Weeks 1–2: TypeScript & Node.js Essentials *(unchanged)*
 - Deep dive into TypeScript — types, interfaces, generics, modules.
 - Node.js fundamentals: event loop, file system, HTTP, modules.
 - **Project:** Build a CLI or simple Node API (CRUD) with TypeScript.
@@ -73,18 +73,36 @@
 - WebSockets — real-time notifications or live chat.
 - **Project:** Extend full-stack app with secure login (OAuth + 2FA) and real-time updates.
 
+### Weeks 17–18: Push Notifications
+- Web Push API fundamentals — VAPID keys, push subscriptions, service workers.
+- Firebase Cloud Messaging (FCM) setup and integration with Nest.js.
+- Handling background notifications, notification permissions, and user preferences.
+- **Project:** Add real push notifications to your full-stack app (e.g. task reminders, activity alerts).
+
+### Weeks 19–20: Payment Integration — Foundations
+- Stripe setup — API keys, products, and pricing models.
+- One-time payments and checkout sessions with Stripe.js on the frontend.
+- Handling payment success and failure flows end-to-end.
+- **Project:** Add a one-time payment flow to your app (e.g. buying a plan or a product).
+
+### Weeks 21–22: Payment Integration — Advanced
+- Stripe subscriptions — recurring billing, trial periods, plan upgrades and downgrades.
+- Webhook handling — verifying and processing Stripe events securely in Nest.js.
+- Refunds, cancellations, and edge case handling.
+- **Project:** Full subscription system with webhook-driven status updates in your app.
+
 ---
 
 ## Phase 5: DevOps & Deployment
 
 **Goal:** Ship a production-ready, containerized application.
 
-### Weeks 17–18: Docker & Containerization
+### Weeks 23–24: Docker & Containerization
 - Containerize your Nest.js backend and React frontend with Docker.
 - Docker Compose for local multi-service orchestration.
 - **Project:** Fully Dockerized full-stack application running locally.
 
-### Weeks 19–20: CI/CD & Cloud Deployment
+### Week 25: CI/CD & Cloud Deployment
 - Set up CI/CD pipelines using GitHub Actions or GitLab CI.
 - Automate tests and deployments.
 - Deploy to Vercel, Render, or AWS.
@@ -95,15 +113,17 @@
 ## Key Tips
 
 - **Backend-first:** Build REST APIs in Nest before worrying about React styling.
-- **Project-based learning:** Every 1–2 weeks, ship a mini project, it reinforces everything.
-- **TypeScript everywhere:** Node, Nest, and React, this makes you career-ready.
+- **Project-based learning:** Every 1–2 weeks, ship a mini project — it reinforces everything.
+- **TypeScript everywhere:** Node, Nest, and React — this makes you career-ready.
 - **PostgreSQL over MongoDB:** Stronger for structured apps and backend-heavy roles.
 - **Production mindset from Phase 4:** Security, caching, validation, and real-time features are what separate junior from mid-level developers.
+- **Take your time with Stripe:** Webhook handling and subscription logic are where most developers trip up — don't rush it.
 
 ---
 
-By **Week 20**, you will be:
+By **Week 25**, you will be:
 
 1. A **backend-heavy full-stack developer** with Nest.js, PostgreSQL, React, and TypeScript.
-2. Skilled in **advanced backend features** — Redis, OAuth, 2FA, Zod, WebSockets.
-3. Ready for **production deployments** using Docker and CI/CD pipelines.
+2. Skilled in **advanced backend features** — Redis, OAuth, 2FA, Zod, WebSockets, push notifications.
+3. Capable of building **production payment systems** with Stripe — one-time payments, subscriptions, and webhooks.
+4. Ready for **production deployments** using Docker and CI/CD pipelines.
