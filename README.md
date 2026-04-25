@@ -16,13 +16,17 @@
 
 **Weeks 3–4: PostgreSQL Basics**
 
-* Learn SQL queries, joins, constraints, indexing.
+* Learn SQL queries, data types, relationships.
 * Use **pg** library in Node.js for database connections.
 * **Project:** Create a simple database-driven app (e.g., task manager backend).
 
 ---
 
 ## **Month 2: Backend Mastery with Nest.js**
+
+**Weeks 5-6: Advanced PostgreSQL**
+
+* Learn joins, constraints, aggregate functions, indexing.
 
 **Goal:** Become confident in scalable backend development.
 
