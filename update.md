@@ -95,8 +95,8 @@
 ## Key Tips
 
 - **Backend-first:** Build REST APIs in Nest before worrying about React styling.
-- **Project-based learning:** Every 1–2 weeks, ship a mini project — it reinforces everything.
-- **TypeScript everywhere:** Node, Nest, and React — this makes you career-ready.
+- **Project-based learning:** Every 1–2 weeks, ship a mini project, it reinforces everything.
+- **TypeScript everywhere:** Node, Nest, and React, this makes you career-ready.
 - **PostgreSQL over MongoDB:** Stronger for structured apps and backend-heavy roles.
 - **Production mindset from Phase 4:** Security, caching, validation, and real-time features are what separate junior from mid-level developers.
 
