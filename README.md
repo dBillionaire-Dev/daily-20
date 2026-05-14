@@ -40,7 +40,7 @@
 
 * Authentication & Authorization (JWT, Passport.js).
 * Validation, Exception Filters, Pipes, Guards.
-* Database ORM: **Prisma** or **TypeORM** with Postgres.
+* Database ORM: **Prisma** and **TypeORM** with Postgres.
 * **Project:** Extend blog API with user auth, roles, and relations.
 
 ---
