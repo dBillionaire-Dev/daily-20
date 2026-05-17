@@ -2,7 +2,7 @@
  * # Data Types — What Can PostgreSQL Store?
  *
  * Before you create any table, you need to tell Postgres exactly what kind of data each column will hold.
- * This is one of the things that makes Postgres powerful, it's very strict about types, which protects your data from garbage getting in.
+ * This is one of the things that makes Postgres powerful. It's very strict about types, which protects your data from garbage getting in.
  *
  * Think of it like this: if a column is meant to store someone's age, you don't want someone accidentally storing "twenty" as text instead of `20` as a number.
  * Postgres enforces this for you.
