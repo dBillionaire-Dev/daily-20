@@ -173,6 +173,7 @@ WHERE id = 4;
 
 -- TRUNCATE - Wiping an entire table (use with caution, as it cannot be rolled back and will delete all data in the table)
 -- Use only in dev, not in production, unless you are absolutely sure you want to delete all records in the table.
+
 TRUNCATE TABLE posts;
 -- This will delete all posts in the posts table, but it will not affect the users table.
 -- It will reset any auto-incrementing IDs back to their initial value.
