@@ -1,4 +1,4 @@
-# Week 4: PostgreSQL + Node.js Integration (TypeScript) - 11th April 2026 - 17th April, 2026
+# Week 4: PostgreSQL + Node.js Integration (TypeScript)
 
 ## Overview
 Week 4 builds on the PostgreSQL fundamentals learned in Week 3, where core concepts like tables, primary keys (PK), foreign keys (FK), and relationships were introduced.
