@@ -1,4 +1,4 @@
-# **20-Week Career-Ready Full-Stack + AI/ML Roadmap**
+# **25-Week Career-Ready Full-Stack + AI/ML Roadmap**
 
 <img width="1408" height="768" alt="Visual map" src="https://github.com/user-attachments/assets/707fbe80-1b5d-4bce-ac4d-fa716570d7db" />
 
